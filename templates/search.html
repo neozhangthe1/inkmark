@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block ex_js %}<script type="text/javascript" src="/static/js/search_page.js"></script>{% endblock %}
+{% block search %}{% endblock %}
+{% block data %}
+
+<form class="form-search">
+	{{form.query}}
+	<button type="submit" class="btn btn-primary">
+		Search
+	</button>
+</form>
+
+<div id="search_results">
+	{% if bookmarks_page or users_page %}
+	<ul class="nav nav-pills" id="result_nav">
+	  <li id="link_li" class="active">
+	    <a id="link_nav">Links : {{bnum}}</a>
+	  </li>
+	  <li id="user_li"><a id="user_nav">Users : {{unum}}</a></li>
+	</ul>
+
+	<div class="results_wrap" id="link_tab">
+		{% if bookmarks_page %}
+		{% with bookmarks_page.object_list as bookmarks %}
+		{% include 'bookmarks_show.html' %}
+		{% endwith %}
+		<div class="page_nav" id="bn">
+			{% if bookmarks_page.has_previous %}
+			<a class="left previsous_page"
+			href="/search/?query={{words|urlencode}}&?page={{bookmarks_page.previous_page_number}}&?bookmark"
+			onclick="get_page()"></a>
+			{% endif %}
+			<span class="curren_page">第{{bookmarks_page.number}}/{{bookmarks_page.paginator.num_pages}}页</span>
+			{% if bookmarks_page.has_next %}
+			<a class="right next_page"
+			href="/search/?query={{words|urlencode}}&?page={{bookmarks_page.next_page_number}}&?bookmark"
+			onclick="get_page()"></a>
+			{% endif %}
+		</div>
+		{% endif %}
+	</div>
+	<div class="results_wrap" id="user_tab" style="display:none">
+		{% if users_page %}
+		{% with users_page.object_list as users %}
+		{% include 'sns/users_show.html' %}
+		{% endwith %}
+		<div class="page_nav" id="un">
+			{% if users_page.has_previous %}
+			<a class="left previsous_page"
+			href="/search/?query={{words|urlencode}}&?page={{users_page.previous_page_number}}&?user"
+			onclick="get_page()"></a>
+			{% endif %}
+			<span class="curren_page">第{{users_page.number}}/{{users_page.paginator.num_pages}}页</span>
+			{% if users_page.has_next %}
+			<a class="right next_page"
+			href="/search/?query={{words|urlencode}}&?page={{users_page.next_page_number}}&?user"
+			onclick="get_page()"></a>
+			{% endif %}
+		</div>
+		{% endif %}
+	</div>
+	{% endif %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}保存成功{% endblock %}
+{% block heading %}书签保存成功{% endblock %}
+{% block data %}
+	<h2>现在你可以：</h2>
+	<p>{% if created %}<a class="button" href="/bookmark/save">继续添加</a>&nbsp;或者&nbsp;{% endif %}
+		<a class="button" href="{{bookmark.get_absolute_url}}">查看该书签</a></p>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% block ex_js %}<script type="text/javascript" src="/static/js/sns.js"></script>
+<script type="text/javascript">var username='{{username}}';</script>{% endblock %}
+{% block title %}User - {{username}}{% endblock %}
+{% block heading %}<h1>{{person.portrait.nick|default:username}}的主页</h1>{% endblock %}
+{% block data %}
+	<div id="usr_pageh">
+			<div id="rManager">
+			{% if FLAG == 0 or FLAG == 2 %}
+				<a class="button follow" onclick="relation(event)" 
+				href="{% url follow username=username %}">关注这</a>
+			{% else %}
+				<a class="button unfollow" onclick="relation(event)"
+				href="{% url unfollow username=username %}">取消关注</a>
+			{% endif %}
+			</div>
+			<div class="fstate">
+				<img class="left" src="/static/pic/me.png"/>
+				<img class="left" src="/static/pic/r{{FLAG|stringformat:'s'}}.png"/>
+				<img class="left" src="/static/pic/pig.png"/>
+				<div class="clearfix"></div>
+				<div id="fstip"><span>
+				{% if FLAG == 0 %}彼此都没关注{% endif %}
+				{% if FLAG == 1 %}你在关注Ta~{% endif %}
+				{% if FLAG == 2 %}Ta在关注你~{% endif %}
+				{% if FLAG == 3 %}彼此都关注了{% endif %}
+				</span></div>
+			</div>
+	</div>
+	
+	<div class="container">
+	{% with person.slobber.all as slobbers %}
+		{% include 'sns/slobber_list.html' %}
+	{% endwith %}
+	</div>
+{% endblock %}
+{% block torso_right %}
+	{% with person as user %}
+	{% include 'sns/portrait_right.html' %}
+	{% endwith %}
+	<div id="usr_nav">
+		<a class="key fixkey" href="{% url call_slobber username=username %}">
+			Ta的状态[{{person.slobber.all.count}}]</a>
+		<a class="key" href="{% url call_adds username=username %}">
+			Ta添加的书签[{{person.bm_set.all.count}}]</a>
+		<a class="key" href="{% url call_favors username=username %}">
+			Ta收藏的书签[{{person.favor_set.all.count}}]</a>
+		<a class="key" href="{% url call_relation username=username ff='fans' %}">
+			Ta的粉丝[{{person.star_net.all.count}}]</a>
+		<a class="key" href="{% url call_relation username=username ff='follows' %}">
+			Ta关注的人[{{person.fan_net.all.count}}]</a>
+		<div class="clearfix"></div>
+	</div>
+{% endblock %}

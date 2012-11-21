@@ -1,0 +1,19 @@
+
+<div class="responses">
+	{% if responses %}
+	{% for response in responses %}
+	<p><a href="{{response.user.get_absolute_url}}">
+	{% ifequal user.username response.user.username %}Me 
+	{% else %}{{response.user.username}}
+	{% endifequal %}</a>
+		:&quot;{{response.words}}&quot;</p>
+	{% endfor %}
+	{% endif %}
+</div>
+
+<div class="add_response">
+	<p>
+		<input class="response-input" type="text" name="words"/>
+		<span class="btn btn-primary" id="response-submit">Reply</span>
+	</p>
+</div>

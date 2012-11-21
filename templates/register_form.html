@@ -1,0 +1,173 @@
+<script type="text/javascript" src="/static/js/register.js"></script>
+<style>
+#content
+{
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:150px;
+	height:400px;
+	width:450px;
+	border:1px solid #00AEAE;
+}
+#title
+{
+	height:50px;
+	background:#A2D0FF;
+}
+
+#banner
+{
+	height:35px;
+	margin-top:10px;
+	margin-left:-20px;
+	margin-right:20px;
+	background:#525469;
+	padding-left:25px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:20px;
+	color:#FFF;
+	vertical-align:middle;
+	padding-top:5px;
+}
+
+#banner h2
+{
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:18px;
+	color:#FFF;
+}
+
+#title h1
+{
+	margin-top:0px;
+	margin-bottom:10px;
+}
+
+#form_wrapper
+{
+	padding-top:20px;
+}
+#login_form
+{
+	height:160px;
+	width:300px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.input_wrapper
+{
+	margin-top:10px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-right:30px;
+	height:45px;	
+	width:350px;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:18px;
+}
+
+.input_wrapper input
+{
+	float:right;
+	width:200px;
+	height:20px;
+	border:1px solid #C8E3FF;
+}
+
+.input_wrapper label
+{
+	float: left;
+}
+.exception
+{
+	position:relative;
+	left:25px;
+	bottom:10px;
+	list-style:none;
+	margin-bottom:10px;
+}
+
+.exception a
+{
+
+	float:left;
+	text-decoration:none;
+	font-size:13px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#00366C;
+}
+
+#register_button
+{
+	float:left;
+	margin-left:50px;
+	margin-top:10px;
+	height:30px;
+	width:80px;
+	background:#7ED67E;
+	border:1px solid #2E5829;
+}
+
+#already
+{
+	float:left;
+	left:100px;
+	margin-left:20px;
+	margin-top:15px;
+	width:auto;
+}
+
+#already a
+{
+
+	text-decoration:none;
+	font-size:13px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#00366C;
+}
+
+.form_info
+{
+	display: none;
+	margin:0px;
+	font-size: 10px;
+	color:#FF0000;
+}
+</style>
+<div id="content">
+	<div id="title" >
+            <img src="/static/img/welcome2.png" alt="welcome"/>
+  	</div>
+    <div id="banner">Sign Me In</div>
+    <div id="form_wrapper">
+        <form method="post" action="/register/" id="regist_form">{% csrf_token %}               
+            <div class="input_wrapper">
+                <label for="username">Username:</label>
+                <!-- <input type="name" name="name" id="username" value=""> -->
+                {{form.username}}
+                <p id='no_username' class='form_info'>please input username</p>
+                <p id='exist_username' class='form_info'>username already exists</p>
+            </div>
+            <div class="input_wrapper">
+                <label for="email">Email Address:</label>
+                <!-- <input type="email" id="email" name="email"> -->
+                {{form.email}}
+                <p id='no_email' class='form_info'>please input you email</p>
+                <p id='invaild_email' class='form_info'>email already exists</p>
+            </div>
+            <div class="input_wrapper">
+                <label for="password" >Password:</label>
+                <!-- <input type="password11" id="password1" name="password1"> -->
+                {{form.pwd}}
+                <p id='invaild_password' class='form_info'>password must be more than 6 characters</p>
+            </div>
+            <div class="input_wrapper">
+                <label for="password2">Verify Password:</label>
+                <!-- <input type="password2" id="password2" name="password2"> -->
+                {{form.con_pwd}}
+                <p id='invaild_password2' class='form_info'>2 passwords don't match</p>
+            </div>
+        </form>
+    </div>
+    
+</div>

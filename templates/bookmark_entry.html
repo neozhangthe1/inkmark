@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block title %}{{bookmark.title}}{% endblock %}
+{% block ex_js %}<script type="text/javascript" src="/static/js/event.js"></script>
+{% endblock %}
+{% block ex_css %}
+<link rel="stylesheet" href="/static/css/rater.css" type="text/css" />
+{% endblock %}
+{% block data %}
+{% block search %}{% endblock %}
+{% load chili_filter %}
+<div id="entry_apex row">
+	<div class="span3" id="add_favor">
+		<div class="favor_img">
+			{% if bookmark.user == user %}
+			<a class="byme" title="Added by me" href="#"></a>
+			{% else %}
+			{% if FON %}
+			<a class="favor" href="#" title="saved"></a>
+			{% else %}
+			<a class="not_favor" title="Save?"
+			href="{% url object_collector content_type='bookmark.bookmark' obj_id=bookmark.id %}"></a>
+			{% endif %}
+			{% endif %}
+		</div>
+		<div class="count">
+			<div class="count_up">
+				{{bookmark.favor_times}}
+			</div>
+			<div class="count_bottom">
+				Save
+			</div>
+		</div>
+	</div>
+	<div class="span7" id="entry_basic">
+		<h2><a target="blank" href="{{bookmark.link.url}}">{{bookmark.title|escape}}</a></h2>
+		<div class="eb_bd">
+			<p>
+				{{bookmark.avg_rating|num2star}}
+			</p>
+			<h6 class="small-table-title">TAGS:</h6>
+			<ul style="margin-left: 20px">
+				{% if bookmark.tags.all %}
+				{% for tag in bookmark.tags.all %}
+				<li >
+					<a class="label label-info" href="/tag/{{tag.name}}/"> {{tag.name|escape}} </a>
+				</li>
+				{% endfor %}
+				{% else %}
+				<li>
+					None.
+				</li>
+				{% endif %}
+			</ul>
+			<h6 class="small-table-title">FROM: <a class="bm_genesis" href="{{bookmark.user.get_absolute_url}}">{{bookmark.user.username}}</a></h6>
+		</div>
+
+	</div>
+	<div class="clearfix"></div>
+</div>
+<div id="entry_intro">
+	<h3>Intro: </h3>
+	<p class="indent">
+		{{bookmark.info}}
+	</p>
+</div>
+<div id="entry_review">
+	<table>
+		<tbody>
+			<tr>
+<!-- 				<td id="ron">{% if RON %}<h6 class="small-table-title">My Score:</h6>{% endif %}</td> -->
+				<td id="rater">{% include 'event/rater.html' %}</td>
+				<td><a id="add_comment" class="btn btn-success" href="{% url comment_page app_model='bookmark.bookmark' obj_id=bookmark.id %}">talk</a></td>
+				<div class="clearfix"></div>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div id="entry_comments">
+	<h3>Latest Comments:</h3>
+	{% include 'event/comments_show.html' %}
+</div>
+<script type="text/javascript">
+	var ron={{RON}}
+	var fon={{FON}}
+</script>
+{% endblock %}
+{% block modal %}
+{% if user.is_authenticated %}
+<div id="fcmodal" style="display:none">
+	<form method="post" action="#">
+		<p>
+			<label for="cmt_in"></label>
+		</p>
+		<p>
+			<textarea name="words" id="cmt_in"></textarea>
+</p>		<p>
+			<input id="cmttype" type="hidden"/>
+			<input id="url" type="hidden"/>
+		</p>
+		<p>
+			<span class="texterror"></span>
+			<input type="submit" id="submit" class="button" value=""/>
+			<span id="cancel" class="button">Cancel</span>
+		</p>
+	</form>
+</div>
+{% endif %}
+{% endblock %}

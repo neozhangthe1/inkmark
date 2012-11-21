@@ -1,0 +1,17 @@
+{# slobber list page #}
+<ul id="slobber_list">
+	{% if slobbers %}
+	{% for slobber in slobbers %}
+	<li>
+		<div class="slb_entry">
+		<span class="slbwds"><span class="slbwdswp">{{slobber.words}}</span></span>
+		<div class="before_rsp"><a class="button show_responses" onclick="show_response(event)"
+		href="{% url comment_page app_model='event.slobber' obj_id=slobber.id %}" >
+			回应（{{slobber.response.count}}）</a><div class="clearfix"></div></div>
+		</div>
+	</li>
+	{% endfor %}
+	{% else %}
+	<li><p class="none_item">暂时没有状态</p></li>
+	{% endif %}
+</ul>

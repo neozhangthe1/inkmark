@@ -1,0 +1,13 @@
+<!--a sub-page to render the tag cloud-->
+{% if tags %}
+		{% for tag in tags %}
+			<span class="cloud_item">
+				<a href="/tag/{{tag.name}}" class="cloud-{{tag.weight}}">
+				{{tag.name}}
+				</a>
+			</span>
+		{% endfor %}
+{% else %}
+	<h1>No tags 囧</h1>
+{% endif %}
+

@@ -1,0 +1,20 @@
+<ul>
+	{% if comments %}
+	{% for comment in comments %}
+	<li><div class="comment shadow">
+		<a class="left avatar" href="{{comment.user.get_absolute_url}}">
+			<img src="{{comment.user.portrait.avatar_url|default:'/static/pic/da.png'}}"/>
+		</a>
+		<div class="right">
+			<h3>{{comment.user.username}}发表于{{comment.stamp|date:"H:i_D_d_M_Y"}}</h3>
+			<p class="cmtwds indent">{{comment.words}}</p>
+		</div>
+		<div class="clearfix before_rsp"><a class="button show_responses" onclick="show_response(event)"
+		href="{% url comment_page app_model='event.comment' obj_id=comment.id %}" >
+			回应（{{comment.responses.count}}）</a><div class="clearfix"></div></div>
+	</div></li>
+	{% endfor %}
+	{% else %}
+	<li id="nocmt">暂无评论(∩_∩)</li>
+	{% endif %}
+</ul>

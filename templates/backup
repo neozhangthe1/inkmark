@@ -1,0 +1,15 @@
+<form action="/login/" method="post">{% csrf_token %}
+				<table cellspacing="0">
+				<tbody>
+					<tr>
+						<td><label for="username">”√ªß√˚</label></td>
+						<td><label for="pwd">√‹¬Î</label></td>
+					</tr>
+					<tr>
+						<td><input id="login_username" name="username" class="input_text" type="text"/></td>
+						<td><input id="login_pwd" name="pwd" class="input_text" type="password"/></td>
+						<td><input class="button" type="submit" value="µ«  ¬º"/></td>
+					</tr>
+				</tbody>
+				</table>
+			</form>

@@ -1,0 +1,79 @@
+
+/* styles for the diamonds rater */
+.rating_tool{
+	list-style-type:none;
+	margin: 0px;
+	padding:0px;
+	width: 150px;
+	height: 30px;
+	position: relative;
+
+}
+.rating_tool li {
+	list-style:none;
+	padding:0px;
+	margin:0px;
+}
+.rating_tool a{
+	width:18px;
+	height:18px;
+	text-decoration: none;
+	text-indent: -9000px;
+	position: absolute;
+	padding: 0px;
+	margin:0px;
+	background: url("/static/pic/0.gif") 0 0
+}
+.rating_tool  a.mouse_on{
+	background: url("/static/pic/2.gif") 0 0;
+}
+.rating_tool a.fix.mouse_on{
+	background: url("/static/pic/2.gif") 0 0;
+}
+.rating_tool a.fix {
+	background: url("/static/pic/1.gif") 0 0;
+}
+.rate_1{
+	left: 0px;
+}
+.rate_2{
+	left:18px;
+}
+.rate_3{
+	left:36px;
+}
+.rate_4{
+	left:54px;
+}
+.rate_5{
+	left:72px;
+}
+
+/* styles for the collector 
+.favor_info {
+	float:left;
+	width:80px;
+	background-color:#000000;
+}
+.not_favor {
+	margin:8px;
+}
+.not_favor a, .favor a {
+	width:64px;
+	height:64px;
+	text-decoration: none;
+	text-indent: -9000px;
+	display:block;
+}
+
+.favor_count {
+	margin:0 8px 8px;
+	font-size:100%;
+	color:#FFFFFF;
+}
+.favor {
+	background:url("/static/pic/04.png") 0 0;
+}
+.not_favor {
+	background:url("/static/pic/05.png") 0 0;
+}*/

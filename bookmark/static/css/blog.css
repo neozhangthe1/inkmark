@@ -1,0 +1,79 @@
+#blog_list {
+	list-style: none;
+	padding: 0;
+	margin: 0 auto;
+	width: 630px;
+	margin-top: 20px;
+}
+#blog_list .blog_entry {
+	width: 630px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid whiteSmoke;
+	min-height: 80px;
+}
+#blog_list .blog_entry .blog_who img {
+	width: 60px;
+	height: 60px;
+	margin: 0;
+	padding: 0;
+	box-shadow: 3px 3px 2px 0px #666;
+}
+#blog_list  .blog_who {
+	margin-right: 10px;
+	padding: 0;
+	width: 60px;
+}
+#blog_list .blog_content {
+	width: 530px;
+	margin: 0;
+}
+#blog_list .rspinput {
+	width: 361px;
+	background-color: #FFFFFF;
+	border: 1px;
+	height: 21px;
+	line-height: 21px;
+	box-shadow: 3px 3px 5px 0 #aaa inset;
+	padding-left: 5px;
+	border-radius: 5px;
+}
+#blog_list .middle  p, #blog_list  .middle div {
+	margin: 5px 0;
+	padding-bottom: 1px;
+}
+#blog_list .middle div.add_response {
+	margin-top: 10px;
+}
+#blog_list .blog_content .middle {
+	padding: 3px;
+	width: 483px;
+}
+#blog_list .before_rsp, #blog_list .add_response {
+	position: relative;
+	padding-right: 20px;
+}
+#blog_list .add_response, #blog_list .responses {
+	padding-left: 20px;
+	font-size: 13px;
+}
+#blog_list .before_rsp .button, #blog_list .add_response .button {
+	float: right;
+	font-size: 12px;
+	padding: 2px 5px;
+}
+#blog_list .adwords {
+	font-style: italic;
+	font-size: 12px;
+	padding: 5px 0 0 2em;
+}
+#blog_list .blog_what {
+	text-decoration: none;
+	color: #888;
+	border-bottom: 1px solid #666;
+}
+.response-input{
+	float: left;
+	margin-right: 20px;
+	width: 345px;
+}

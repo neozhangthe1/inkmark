@@ -1,0 +1,51 @@
+<div id="modal" style="display:none">
+<div class="modal_header">
+	<div class="button" id="modal-close">关闭 ▲</div>
+</div>
+<div class="avEdit">
+	<div class="editBox">
+		
+		<h2>选择文件</h2>
+		<div id="preview"><img style="opacity:0"></div>
+		<h3></h3>
+		<p>点击选择按钮，然后选一张图片:)</p>
+		<div class="button">选择
+			<form method="post" enctype="multipart/form-data" id="fileInfo">
+				<input id="fileSelect" name="avFile" type="file" />
+				<input name="x1" type="hidden" value="0"/>
+				<input name="y1" type="hidden" value="0"/>
+				<input name="x2" type="hidden" value="90"/>
+				<input name="y2" type="hidden" value="90"/>
+				<input name="w" type="hidden" value="90"/>
+				<input name="h" type="hidden" value="90"/>
+			</form>
+		</div>
+		<div class="button hidden" id="save">保存</div>
+	</div>
+	<div id="stretch"><img style="opacity:0"/></div>
+</div>
+</div>
+
+<script type="text/javascript" src="/static/js/imgareaselect.pack.js"></script>
+<script type="text/javascript" src="/static/js/avatar.js"></script>
+
+<script type="text/javascript">
+	$("#modal").ready(function() {
+		$("#fileSelect").change(readImg);
+		$("#save").click(sendData);
+		$(".button").hover(function() {
+			$(this).addClass("hover");
+		},function() {
+			$(this).removeClass("hover");
+		});
+		modalOffset();
+		$('#modal').show();
+		$("#stretch img").load(modalOffset);
+		$('#modal-close').click(function () {
+			if ($('#stretch img').data('imgAreaSelect')) {
+				$('#stretch img').data('imgAreaSelect').cancelSelection();
+			}
+		})
+	});
+		
+</script>

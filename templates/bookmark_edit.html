@@ -1,0 +1,25 @@
+<script type="text/javascript" src="/static/js/bm_save.js"></script>
+
+
+<form id="bm_edit" method="post" action="/bookmark/save/">{% csrf_token %}
+	{{form.non_field_errors}}
+	<div class="error">{{form.url.errors}}</div>
+	<div class="formfield"><p style="display:none" class="inputtip">
+	书签网址需要以&quot;http://&quot;或&quot;https://&quot;开头，例如https://www.google.com
+	或者http://202.222.12.334</p>
+	<p>{{form.url.label_tag}}={{form.url}}</p></div>
+	<div class="error">{{form.title.errors}}</div>
+	<div class="formfield"><p style="display:none" class="inputtip">
+	为书签添加一个标题,最多50个汉字或100个字母</p>
+	<p>{{form.title.label_tag}}={{form.title}}</p></div>
+	<div class="error">{{form.tags.errors}}</div>
+	<div class="formfield"><p style="display:none" class="inputtip">
+	为书签添加标签，不同标签之间以空格分隔</p>
+	<p>{{form.tags.label_tag}}={{form.tags}}</p></div>
+	<div class="error">{{form.info.errors}}</div>
+	<div class="formfield"><p style="display:none" class="inputtip">
+	言简意赅地描述一下这个网址，最多不要超多200字或400个字母。</p>
+	<p>{{form.info.label_tag}}={{form.info}}</p></div>
+	<div class="formfield"><input class="button" type="submit" value="保  存"/></div>
+	<div class="clearfix"></div>
+</form>

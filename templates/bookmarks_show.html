@@ -1,0 +1,45 @@
+{# a sub-page to render a set of bookmarks #}
+{% load chili_filter %}
+<div class="linkList">
+	<ul class="bookmark-list unstyled">
+		{% if bookmarks %}
+		{% for bookmark in bookmarks %}
+		<div class="link-item-wrap">
+			<div class="content" style="margin: 10px;">
+				<div class="link-item-title">
+					<small class="time" style="float: right;"> <a href="{{bookmark.get_absolute_url}}" title="11:38 AM - 6 Nov 12"> <span data-time="1352173116" data-long-form="true">32m</span> </a> </small>
+					<a href="{{bookmark.get_absolute_url}}"> <strong class="link-title"> {% if need_highlight %}
+					{{bookmark.title|highlight:words}}
+					{% else %}
+					{{bookmark.title|escape}}
+					{% endif %} </strong> <span class="link-url"> @{{bookmark.get_absolute_url}} </span> </a>
+				</div>
+				<p class="link-content">
+					{{bookmark.info}}
+				</p>
+				<div class="taglist">
+					{% if bookmark.tags.all %}
+					{% for tag in bookmark.tags.all %}
+					<a href="/tag/{{tag.name}}/"  class="label label-info"> {% if need_highlight %}
+					{{tag.name|highlight:words}}
+					{% else %}
+					{{tag.name|escape}}
+					{% endif %} </a>
+					{% endfor %}
+					{% else %}
+					None.
+					{% endif %}
+					{% if show_user %}
+					<div class="genesis">
+						update by: <a href="/user/{{bookmark.user.username}}/"> {{bookmark.user.username}}</a>
+					</div>
+					{% endif %}
+
+				</div>
+			</div>
+		</div>
+		{%endfor%}
+		{%endif%}
+	</ul>
+</div>
+

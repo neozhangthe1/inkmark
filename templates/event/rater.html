@@ -1,0 +1,18 @@
+{# diamond rater #}
+<ul class="rating_tool">
+	<li>
+		<a class="rate_1" href="{% url object_rater content_type='bookmark.bookmark' obj_id=bookmark.id score=1 %}">rate 1</a>
+	</li>
+	<li>
+		<a class="rate_2" href="{% url object_rater content_type='bookmark.bookmark' obj_id=bookmark.id score=2 %}">rate 2</a>
+	</li>
+	<li>
+		<a class="rate_3" href="{% url object_rater content_type='bookmark.bookmark' obj_id=bookmark.id score=3 %}">rate 3</a>
+	</li>
+	<li>
+		<a class="rate_4" href="{% url object_rater content_type='bookmark.bookmark' obj_id=bookmark.id score=4 %}">rate 4</a>
+	</li>
+	<li>
+		<a class="rate_5" href="{% url object_rater content_type='bookmark.bookmark' obj_id=bookmark.id score=5 %}">rate 5</a>
+	</li>
+</ul>

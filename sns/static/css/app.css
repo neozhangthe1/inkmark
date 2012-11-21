@@ -1,0 +1,130 @@
+.avEdit {
+	padding:10px;
+	margin:0 auto;
+}
+
+.Origin {
+	float:right;
+	margin-left:20px;
+	position:relative;
+	
+	display:-moz-box;
+	-moz-box-align:center;
+	-moz-box-orient:vertical;
+	
+}
+.Origin img {
+	max-width:400px;
+	max-height:400px;
+	margin-bottom:10px;
+	
+}
+.editBox {
+	float:right;
+	padding:10px;
+	width:360px;
+	min-height:200px;
+	position:relative;
+	display:block;
+}
+.editBox h2 {
+	padding:0 0 5px;
+	margin:0;
+	font-size:140%;
+	border-bottom:1px solid #BBBBBB;
+}
+.editBox .preview {
+	float:left;
+	margin:20px 10px 0 0;
+	width:90px;
+	height:90px;
+	overflow:hidden;
+	position: relative;
+	border:1px dashed #BBBBBB;
+}
+.editBox h3 {
+	font-size:120%;
+	
+}
+.editBox h3 , p{
+	
+	overflow:auto;
+}
+.editBox .warning {
+	color:#FF0000;
+}
+.editBox .select {
+	background-color:#000000;
+	color:#FFFFFF;
+	width:70px;
+	height:1.5em;
+	position:absolute;
+	left:10px;
+	bottom:10px;
+	overflow:hidden;
+	text-align:center;
+}
+.editBox #avSubmit {
+	background-color:#000000;
+	color:#FFFFFF;
+	width:70px;
+	height:1.5em;
+	position:absolute;
+	left:90px;
+	bottom:10px;
+	text-align:center;
+}
+.editBox .select.hover ,#avSubmit.hover{
+	background-color:#888888;
+	cursor:pointer;
+	box-shadow:0 0 5px #888888;
+}
+#fileSelect {
+	opacity:0;
+	font-size:100px;
+	position:absolute;
+	right:0;
+	top:0;
+	cursor:pointer;
+}
+.modal {
+	-moz-transition-property: top,left;
+	-moz-transition-duration: 0.7s;
+	box-shadow:0 0 31px #000000;
+}
+/*
+ * imgAreaSelect default style
+ */
+
+.imgareaselect-border1 {
+	background: url('/static/pics/border-v.gif') repeat-y left top;
+}
+
+.imgareaselect-border2 {
+    background: url('/static/pics/border-h.gif') repeat-x left top;
+}
+
+.imgareaselect-border3 {
+    background: url('/static/pics/border-v.gif') repeat-y right top;
+}
+
+.imgareaselect-border4 {
+    background: url('/static/pics/border-h.gif') repeat-x left bottom;
+}
+
+.imgareaselect-border1, .imgareaselect-border2,
+.imgareaselect-border3, .imgareaselect-border4 {
+
+	opacity: 0.5;
+}
+
+.imgareaselect-handle {
+    background-color: #fff;
+    border: solid 1px #000;
+    opacity: 0.5;
+}
+
+.imgareaselect-outer {
+    background-color: #000;
+    opacity: 0.5;
+}

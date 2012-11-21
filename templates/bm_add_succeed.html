@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}添加成功{% endblock %}
+{% block heading %}添加成功，感谢你的分享！{% endblock %}
+{% block data %}
+	<div id="add_succeed" class="shadow">
+		<h2>现在你可以：</h2>
+		<P><a class="button" href="{{bookmark.get_absolute_url}}">查看该书签</a>
+			<a class="button" href="/bookmark/save/">继续添加</a></P>
+	</div>
+{% endblock %}

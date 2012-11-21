@@ -1,0 +1,43 @@
+{# a template to render the blog list #}
+<ul id="blog_list">
+	{% if blogs %}
+	{% for blog in blogs %}
+	<li>
+		<div class="blog_entry">
+			<div class="blog_who left">
+				<a class="user_link" href="{{ blog.who.get_absolute_url }}">
+				<img src="{{ blog.who.portrait.avatar_url|default:'/static/pic/da.png' }}" title="{{ blog.who.username }}"/>
+				</a>
+			</div>
+			<div class="blog_content right">
+				<div class="middle">
+					{% if blog.did == 'T' %}
+					<p><span class="words">
+						&quot;{{blog.words|escape}}&quot;</span></p>
+					<p class="before_rsp">
+						<a class="label label-info pull-right show_responses"  onclick="show_response(event)"
+						href="{% url comment_page app_model='event.slobber' obj_id=blog.what.id %}">
+							reply（{{blog.what.response.count}}）</a></p>
+					{% else %}
+					<p>See, I just {{blog.get_did_display}}：
+						<a class="blog_what" href="{{blog.what.get_absolute_url}}">
+						{% if blog.did == 'F' %}
+						{{blog.what.username}}
+						{% else %}
+						{{blog.what.title}}
+						{% endif %}</a><br/>
+						{% if blog.words %}
+						<span class="adwords">
+							&quot;{{blog.words|escape}}&quot;</span>
+						{% endif %}</p>
+					{% endif %}
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</li>
+	{% endfor %}
+	{% else %}
+	<li>It seems you haven't followed anyone... Wanna see some new links?</li>
+	{% endif %}
+</ul>

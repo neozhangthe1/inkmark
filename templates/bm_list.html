@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock %}
+{% if msg %}
+{% block msg %}
+<h1>{{msg}}</h1>
+{% endblock %}
+{% endif %}
+{% block data %}
+	<div class="content">
+		{% include 'bookmarks_show.html' %}
+	</div>
+{% endblock %}

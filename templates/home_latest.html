@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+{% block heading %}
+
+{% endblock %}
+
+{% block data %}
+<ul class="nav nav-pills" >
+  <li >
+    <a href="/home/">broadcast</a>
+  </li>
+  <li class="active"><a href="/latest/">links</a></li>
+</ul>
+	<h4>Fresh new links!</h4>
+	<div class="content">
+	{% include 'bookmarks_show.html' %}
+	</div>
+{% endblock %}

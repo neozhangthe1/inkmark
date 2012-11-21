@@ -1,0 +1,33 @@
+{# a sub-page to render a set of users #}
+{% load chili_filter %}
+
+<ul id="usr_list">
+{% if users %}
+{% for person in users %}
+	<li>
+		<div class="portrait">
+		<div class="left">
+			<a href="{{ person.get_absolute_url }}" class="user_link">
+				<img src="{{person.portrait.avatar_url|default:'/static/pic/da.png'}}" title="{{person.username}}"/>
+			</a>
+		</div>
+		<div class="right">
+				{% if need_highlight %}
+				<h2>{{person.username|highlight:words}}</h2>
+				{% else %}
+				<h2>{{person.username}}</h2>
+				{% endif %}
+				<p>{{person.portrait.sign|default:'木有签名'}}</p>
+				<div class="usrinfo">
+				<span class="fannum">{{person.star_net.all.count}}粉丝</span>
+				<span class="follownum">{{person.fan_net.all.count}}关注</span>
+				<span class="bmnum">{{person.bm_set.all.count}}添加</span></div>
+		</div>
+		<div class="clearfix"></div>
+		</div>
+	</li>
+{% endfor %}
+{% else %}
+	<li><h2>无 (⊙_⊙?)</h2></li>
+{% endif %}
+</ul>

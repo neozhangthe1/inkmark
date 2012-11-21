@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block walkietalkie %}
+<div id="talk">
+	<form onsubmit="walkietalkie(event)" action="/talk/" method="post" style="margin-bottom: 0">
+		<div class="talkietext"><textarea name="words"></textarea></div>
+		<div class="talkiesub"><span id="twerror"></span>
+		<input class="btn btn-primary pull-right" type="submit" value="Emit"/>
+			<div class="clearfix"></div></div>
+	</form>
+</div>
+{% endblock %}
+
+
